@@ -13,8 +13,8 @@ end
 
 function check_update()
 		needs_update, notice, md5 = false, false, false
-		remote_version = luci.sys.exec("curl -skfL https://blog.chuest.com/hub/OpenWrt/K2P/version.txt")
-		updatelogs = luci.sys.exec("curl -skfL https://blog.chuest.com/hub/OpenWrt/K2P/updatelogs.txt")
+		remote_version = luci.sys.exec("curl -skfL https://blog.chuest.com/d/hub/OpenWrt/K2P/version.txt")
+		updatelogs = luci.sys.exec("curl -skfL https://blog.chuest.com/d/hub/OpenWrt/K2P/updatelogs.txt")
 		remoteformat = luci.sys.exec("date -d $(echo \"" ..remote_version.. "\" | tr '\r\n' ',' | awk -F, '{printf $1}' | awk -F. '{printf $3\"-\"$1\"-\"$2}') +%s")
 		fnotice = luci.sys.exec("echo \"" ..remote_version.. "\" | tr '\r\n' ',' | awk -F, '{printf $(NF-1)}'")
 		dateyr = luci.sys.exec("echo \"" ..remote_version.. "\" | tr '\r\n' ',' | awk -F. '{printf $1\".\"$2}'")
