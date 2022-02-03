@@ -1,0 +1,118 @@
+name: package-sync
+on:
+  push:
+    paths:
+      - '.github/workflows/sync.yml'
+  schedule:
+    - cron: 0 */12 * * *
+  workflow_dispatch:
+    inputs:
+      ssh:
+        description: 'ssh'
+        required: false
+        default: 'false'
+  repository_dispatch:
+
+env:
+  TZ: Asia/Shanghai
+
+jobs:
+  merge:
+    if: github.event.repository.owner.id == github.event.sender.id
+    runs-on: Ubuntu-20.04
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@main
+
+    - name: Initialization environment
+      env:
+        DEBIAN_FRONTEND: noninteractive
+      run: |
+        sudo -E apt-get -qq update
+        sudo timedatectl set-timezone "$TZ"
+        git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git config --global user.name "github-actions[bot]"
+
+    - name: Clone packages
+      run: |
+        git rm -r --cache * >/dev/null 2>&1 &
+        rm -rf `find ./* -maxdepth 0 -type d` >/dev/null 2>&1
+
+        function mvdir() {
+        mv -n `find $1/* -maxdepth 0 -type d` ./
+        rm -rf $1
+        }
+
+        git clone --depth 1 https://github.com/BCYDTZ/luci-app-UUGameAcc
+        svn export https://github.com/sirpdboy/sirpdboy-package/branches/main/luci-app-koolproxyR
+        git clone --depth 1 https://github.com/sirpdboy/luci-app-advanced
+        git clone --depth 1 https://github.com/sirpdboy/luci-app-autotimeset
+        git clone --depth 1 https://github.com/kiddin9/luci-theme-edge -b 18.06
+        svn export https://github.com/kenzok8/litte/trunk/luci-theme-mcat
+        svn export https://github.com/kenzok8/litte/trunk/luci-theme-tomato
+        git clone --depth 1 https://github.com/ChuJian2/luci-app-gpsysupgrade
+        svn export https://github.com/kiddin9/openwrt-bypass/trunk/luci-app-bypass
+        svn export https://github.com/fw876/helloworld/trunk/luci-app-ssr-plus
+        svn export https://github.com/fw876/helloworld/trunk/v2raya
+        git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall && mvdir openwrt-passwall
+        git clone --depth 1 https://github.com/iwrt/luci-app-ikoolproxy  && mv -f luci-app-ikoolproxy/ikoolproxy ikoolproxy
+        git clone --depth 1 https://github.com/jerrykuku/luci-theme-argon
+        git clone --depth 1 https://github.com/jerrykuku/luci-app-argon-config
+        git clone --depth 1 https://github.com/jerrykuku/luci-app-vssr
+        git clone --depth 1 https://github.com/jerrykuku/lua-maxminddb
+        git clone --depth 1 https://github.com/jerrykuku/luci-app-ttnode
+        git clone --depth 1 https://github.com/jerrykuku/luci-app-jd-dailybonus
+        git clone --depth 1 https://github.com/destan19/OpenAppFilter && mvdir OpenAppFilter
+        git clone --depth 1 https://github.com/gdck/luci-app-cupsd cupsd1 && mv -n cupsd1/luci-app-cupsd cupsd1/cups/cups ./ ; rm -rf cupsd1
+        git clone --depth 1 https://github.com/sundaqiang/openwrt-packages && mv -n openwrt-packages/luci-* ./; rm -rf openwrt-packages
+        svn export https://github.com/vernesong/OpenClash/trunk/luci-app-openclash
+        svn export https://github.com/sirpdboy/netspeedtest/trunk/luci-app-netspeedtest
+        svn export https://github.com/messense/aliyundrive-fuse/trunk/openwrt && mvdir openwrt
+        svn export https://github.com/Ysurac/openmptcprouter-feeds/branches/develop/luci-app-mail
+        svn export https://github.com/Ysurac/openmptcprouter-feeds/branches/develop/msmtp
+        svn export https://github.com/x-wrt/com.x-wrt/trunk/natflow
+        svn export https://github.com/x-wrt/com.x-wrt/trunk/lua-ipops
+        svn export https://github.com/immortalwrt/luci/trunk/applications/luci-app-smartdns
+        svn export https://github.com/immortalwrt/packages/trunk/net/smartdns
+        svn export https://github.com/immortalwrt/packages/trunk/net/eoip
+        svn export https://github.com/immortalwrt/luci/trunk/applications/luci-app-eoip
+        svn export https://github.com/immortalwrt/luci/trunk/applications/luci-app-eqos
+        svn export https://github.com/immortalwrt/luci/trunk/applications/luci-app-acme
+        svn export https://github.com/immortalwrt/packages/trunk/net/acme
+
+    - name: Modify packages
+      run: |
+        shopt -s extglob
+        rm -Rf */.git
+        rm -f */.gitattributes
+        rm -rf */.svn
+        rm -rf */.github
+        rm -rf */.gitignore
+
+        sed -i \
+          -e 's?include \.\./\.\./\(lang\|devel\)?include $(TOPDIR)/feeds/packages/\1?' \
+          -e "s/\(PKG_HASH\|PKG_MD5SUM\|PKG_MIRROR_HASH\):=.*/\1:=skip/" \
+          -e 's?\.\./\.\./luci.mk?$(TOPDIR)/feeds/luci/luci.mk?' \
+          -e 's/ca-certificates/ca-bundle/' \
+          */Makefile
+
+    - name: SSH connection to Actions
+      uses: P3TERX/ssh2actions@v1.0.0
+      if: (github.event.inputs.ssh == 'true' && github.event.inputs.ssh  != 'false') || contains(github.event.action, 'ssh')
+      env:
+        TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+
+    - name: Apply
+      run: |
+        git add .
+        git commit -m "🌴 Sync $(date +%Y-%m-%d" "%H:%M:%S)"
+        git push -f
+
+    - name: Delete workflow runs
+      uses: Mattraks/delete-workflow-runs@main
+      continue-on-error: true
+      with:
+        retain_days: 1
+        keep_minimum_runs: 3
