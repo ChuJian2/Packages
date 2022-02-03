@@ -62,17 +62,3 @@ function exec(cmd, args, writer, timeout)
         os.exit(1)
     end
 end
-
-function auto_get_model()
-    local arch = nixio.uname().machine or ""
-    if fs.access("/etc/openwrt_release") then
-		if arch == "mipsel_24kc" then
-		model = "mipsel_24kc"
-		else
-        local boardinfo = luci.util.ubus("system", "board") or { }
-		model = boardinfo.model
-		end
-    end
-    return util.trim(model)
-end
-

@@ -13,8 +13,7 @@ if autoupgrade_fm ~= '0' then
 var tokenStr = '<%=token%>';
 
 		XHR.get('<%=url([[admin]], [[services]], [[gpsysupgrade]], [[sysversion_check]])%>', {
-			token: tokenStr,
-			model: ''
+			token: tokenStr
 		}, function(x,json) {
 			if(json.code) {
 

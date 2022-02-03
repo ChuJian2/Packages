@@ -29,20 +29,11 @@ function check_update()
 end
 
 function to_check()
-    if not model or model == "" then model = api.auto_get_model() end
 	sysverformat = luci.sys.exec("date -d $(echo " ..get_system_version().. " | awk -F. '{printf $3\"-\"$1\"-\"$2}') +%s")
 	currentTimeStamp = luci.sys.exec("expr $(date -d \"$(date '+%Y-%m-%d %H:%M:%S')\" +%s) - 172800")
-	if model == "mipsel_24kc" then
-		check_update()
-			download_url = "https://blog.chuest.com/d/hub/openwrt/K2P/" ..dateyr.. "openwrt-ramips-mt7621-phicomm_k2p-squashfs-sysupgrade.bin"
-			md5 = ""
-    else
-		local needs_update = false
-		return {
-            code = 1,
-            error = i18n.translate("Can't determine MODEL, or MODEL not supported.")
-			}
-    end
+	check_update()
+		download_url = "https://blog.chuest.com/d/hub/openwrt/K2P/" ..dateyr.. "openwrt-ramips-mt7621-phicomm_k2p-squashfs-sysupgrade.bin"
+		md5 = ""
 
     if needs_update and not download_url then
         return {

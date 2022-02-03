@@ -78,8 +78,7 @@ local system_version = require "luci.model.cbi.gpsysupgrade.sysupgrade".get_syst
 		var updateLogs = document.getElementById('updatelogs');
 
 		XHR.get('<%=url([[admin]], [[services]], [[gpsysupgrade]], [[sysversion_check]])%>', {
-			token: tokenStr,
-			model: ''
+			token: tokenStr
 		}, function(x,json) {
 			removePageNotice_sysup();
 
