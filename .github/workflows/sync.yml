@@ -51,7 +51,7 @@ jobs:
         git clone --depth 1 https://github.com/kiddin9/luci-theme-edge -b 18.06
         svn export https://github.com/kenzok8/litte/trunk/luci-theme-mcat
         svn export https://github.com/kenzok8/litte/trunk/luci-theme-tomato
-        git clone --depth 1 https://github.com/ChuJian2/luci-app-gpsysupgrade
+        svn export https://github.com/sundaqiang/openwrt-packages/trunk/luci-app-easyupdate
         svn export https://github.com/kiddin9/openwrt-bypass/trunk/luci-app-bypass
         svn export https://github.com/fw876/helloworld/trunk/luci-app-ssr-plus
         svn export https://github.com/fw876/helloworld/trunk/v2raya
