@@ -73,7 +73,7 @@ jobs:
         svn export https://github.com/Ysurac/openmptcprouter-feeds/branches/develop/msmtp
         svn export https://github.com/x-wrt/com.x-wrt/trunk/natflow
         svn export https://github.com/x-wrt/com.x-wrt/trunk/lua-ipops
-        svn export https://github.com/immortalwrt/luci/trunk/applications/luci-app-smartdns
+        git clone --depth 1 -b lede https://github.com/pymumu/luci-app-smartdns
         svn export https://github.com/immortalwrt/packages/trunk/net/smartdns
         svn export https://github.com/immortalwrt/packages/trunk/net/eoip
         svn export https://github.com/immortalwrt/luci/trunk/applications/luci-app-eoip
