@@ -65,7 +65,6 @@ jobs:
         git clone --depth 1 https://github.com/jerrykuku/luci-app-jd-dailybonus
         git clone --depth 1 https://github.com/destan19/OpenAppFilter && mvdir OpenAppFilter
         git clone --depth 1 https://github.com/gdck/luci-app-cupsd cupsd1 && mv -n cupsd1/luci-app-cupsd cupsd1/cups/cups ./ ; rm -rf cupsd1
-        git clone --depth 1 https://github.com/sundaqiang/openwrt-packages && mv -n openwrt-packages/luci-* ./; rm -rf openwrt-packages
         svn export https://github.com/vernesong/OpenClash/trunk/luci-app-openclash
         svn export https://github.com/sirpdboy/netspeedtest/trunk/luci-app-netspeedtest
         svn export https://github.com/messense/aliyundrive-fuse/trunk/openwrt && mvdir openwrt
