@@ -1,90 +1,72 @@
+![ChuJian2's GitHub stats](https://github-readme-stats.vercel.app/api?username=ChuJian2&show_icons=true&include_all_commits=true)
+<div align="center">
+<h1 align="center">OpenWrt Package</h1>
+<img src="https://v2.jinrishici.com/one.svg?font-size=24&spacing=2&color=Black">
+</div>
+
+
+## 使用方式[![](https://img.shields.io/badge/-使用方式-F5F5F5.svg)](#使用方式-)
+
+```bash
+echo 'src-git chujian https://github.com/ChuJian2/Packages' >>feeds.conf.default
+```
+
 ## openwrt 插件功能说明 [![](https://img.shields.io/badge/-插件说明-F5F5F5.svg)](#插件说明-)
 
-luci-app-UUGameAcc
+luci-app-acme-------------------------ACME 自动化证书管理环境
 
-uci-app-koolproxyR
+luci-app-advanced---------------------系统高级设置[自带文件管理功能]
 
-luci-app-advanced
+luci-app-aliyundrive-fuse-------------阿里云盘 FUSE 磁盘挂载
 
-luci-app-autotimeset
+luci-app-argon-config-----------------Argon Theme Config Plugin
 
-luci-theme-edge
+luci-app-autotimeset------------------定时设置
 
-luci-theme-mcat
+luci-app-bypass-----------------------bypass
 
-luci-theme-tomato
+luci-app-cupsd------------------------打印机进程
 
-luci-app-gpsysupgrade
+luci-app-easyupdate-------------------在线更新
 
-luci-app-bypass
-
-luci-app-ssr-plus
-
-openwrt-passwall
-
-ikoolproxy
-
-luci-theme-argon
-
-luci-app-argon-config
-
-luci-app-vssr
-
-lua-maxminddb
-
-luci-app-ttnode
-
-luci-app-jd-dailybonus
-
-OpenAppFilter
-
-luci-app-cupsd
-
-luci-app-openclash
-
-luci-app-netspeedtest
-
-aliyundrive-fuse
-
-luci-app-mail
-
-natflow
-
-luci-app-smartdns
-
-luci-app-eoip
-
-luci-app-eqos
-
-luci-app-acme
-
-luci-app-autopoweroff-----------------定时自动重启和自动关机
-
-luci-app-advanced---------------------系统高级设置【自带文件管理功能】
-
-luci-app-NetSpeedTest-----------------网络速度测试
-
-luci-app-poweroffdevice---------------关机功能插件
-
-luci-app-netdata----------------------网络监控中文版
-
-luci-app-timecontrol------------------定时控制
-
-luci-app-control-weburl---------------管控过滤[集成上网时间控制，黑白名单IP过滤，网址过滤几大功能]
-
-luci-app-cpulimit---------------------CPU限制
-
-luci-app-turboacc---------------------新版TURBO ACC加速器
+luci-app-eoip-------------------------WOC Ethernet over IP
 
 luci-app-eqos-------------------------EQS网速控制
 
-luci-app-koolddns---------------------KOOL域名DNS解析工具
+luci-app-ikoolproxy-------------------Koolproxy
+
+luci-app-jd-dailybonus----------------京东挂机
 
 luci-app-koolproxyR-------------------KP经典去广告
 
-luci-theme-btmod----------------------btmod（适配18.06）
+luci-app-mail-------------------------邮件
 
-luci-theme-opentopd-------------------opentopd（适配18.06）
+luci-app-netspeedtest-----------------网络速度测试
 
-luci-theme-opentoks-------------------仿LEDE主题（适配18.06）
+luci-app-oaf--------------------------应用过滤
 
+luci-app-openclash--------------------Clash
+
+luci-app-passwall---------------------PassWall
+
+luci-app-smartdns---------------------SmartDNS
+
+luci-app-ssr-plus---------------------SSRPLUS+
+
+luci-app-ttnode-----------------------甜糖星愿自动收集
+
+luci-app-UUGameAccuu------------------路由器加速五合一插件
+
+luci-app-vssr-------------------------HelloWorld
+
+luci-theme-argon----------------------Argon
+
+luci-theme-edge-----------------------Edge
+
+luci-theme-mcat-----------------------Mcat
+
+luci-theme-tomato---------------------Tomato
+
+## Visitors
+
+![:name](https://count.getloli.com/get/@:name)

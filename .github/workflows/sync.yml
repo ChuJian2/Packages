@@ -70,7 +70,6 @@ jobs:
         svn export https://github.com/messense/aliyundrive-fuse/trunk/openwrt && mvdir openwrt
         svn export https://github.com/Ysurac/openmptcprouter-feeds/branches/develop/luci-app-mail
         svn export https://github.com/Ysurac/openmptcprouter-feeds/branches/develop/msmtp
-        svn export https://github.com/x-wrt/com.x-wrt/trunk/natflow
         svn export https://github.com/x-wrt/com.x-wrt/trunk/lua-ipops
         git clone --depth 1 -b lede https://github.com/pymumu/luci-app-smartdns
         svn export https://github.com/immortalwrt/packages/trunk/net/smartdns
