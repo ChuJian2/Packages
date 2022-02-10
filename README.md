@@ -1,4 +1,6 @@
-![ChuJian2's GitHub stats](https://github-readme-stats.vercel.app/api?username=ChuJian2&show_icons=true&include_all_commits=true)
+<a href="https://github.com/anuraghazra/github-readme-stats">
+  <img align="center" src="https://github-readme-stats.vercel.app/api?username=ChuJian2&show_icons=true&include_all_commits=true" />
+</a>
 <div align="center">
 <h1 align="center">OpenWrt Package</h1>
 <img src="https://v2.jinrishici.com/one.svg?font-size=24&spacing=2&color=Black">
