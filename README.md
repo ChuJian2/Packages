@@ -9,6 +9,8 @@
 
 ## 使用方式[![](https://img.shields.io/badge/-使用方式-F5F5F5.svg)](#使用方式-)
 
+适用于 OpenWrt 18.06 , [Lean's OpenWrt](https://github.com/coolsnowwolf/lede)
+
 ```bash
 echo 'src-git chujian https://github.com/ChuJian2/Packages' >>feeds.conf.default
 ```
@@ -68,6 +70,10 @@ luci-theme-edge-----------------------Edge
 luci-theme-mcat-----------------------Mcat
 
 luci-theme-tomato---------------------Tomato
+
+## 致谢
+- [kiddin9t](https://github.com/kiddin9/openwrt-packages)
+- [kenzok8](https://github.com/kenzok8/small-package)
 
 ## Visitors
 
