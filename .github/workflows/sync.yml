@@ -56,7 +56,7 @@ jobs:
         svn export https://github.com/fw876/helloworld/trunk/luci-app-ssr-plus
         svn export https://github.com/fw876/helloworld/trunk/v2raya
         git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall && mvdir openwrt-passwall
-        git clone --depth 1 https://github.com/yaof2/luci-app-ikoolproxy  && mv -f luci-app-ikoolproxy/ikoolproxy ikoolproxy
+        git clone --depth 1 https://github.com/yaof2/luci-app-ikoolproxy  && mv -f luci-app-ikoolproxy/koolproxy koolproxy
         git clone --depth 1 -b 18.06 https://github.com/jerrykuku/luci-theme-argon
         git clone --depth 1 https://github.com/jerrykuku/luci-app-argon-config
         git clone --depth 1 https://github.com/jerrykuku/luci-app-vssr
